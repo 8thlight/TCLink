@@ -38,7 +38,7 @@ uname=`uname -sm | tr ' ' -`.chomp
 
 version =''
 File.open("../tclink.gemspec", "r") { |f|
-  version = f.read.lines.grep(/s\.version/).first.split(/['"]/)[1]
+  version = f.read.each_line{|l|l}.to_a.grep(/s\.version/).first.split(/['"]/)[1]
 }
 
 #must at least have 3 digits in version string (e.g. "3.4")
